@@ -1,16 +1,18 @@
-FROM node:4.4.5
+# Use node latest
+FROM node:latest
 ENV LAST_UPDATED 20160605T165400
-# Set proxy server, replace host:port with values for your servers
-ENV http_proxy host:port
-ENV https_proxy host:port
 
-
+# Copy source code
 COPY . /app
 
+# Change working directory
 WORKDIR /app
 
-RUN npm install
+# Install dependencies  
+RUN npm install  
 
+# Expose API port to the outside
 EXPOSE 80
 
-CMD ["npm", "start"]
+# Launch application
+CMD ["npm","start"]
